@@ -1,0 +1,38 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+    <div>
+        <div class="form-container">
+            <form method="post" enctype="multipart/form-data">
+                <h2>Servicio de Predicción de Precios de Autos usados</h2>
+
+                <div class="form-group">
+                    <label asp-for="Carro.Year"></label>
+                    <select class="form-control" asp-for="Carro.Year" asp-items="Model.Years"></select>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Carro.Mileage"></label>
+                    <input class="form-control" asp-for="Carro.Mileage"/>
+                </div>
+
+                <div class="form-group">
+                    <label>Fabricante y Modelo</label>
+                    <select class="form-control" asp-for="IdModeloAuto" asp-items="Model.ModelosAuto"></select>
+                </div>
+
+                <button class="btn btn-secondary" type="submit">Predecir Precio</button>
+
+                @if (Model.MostrarPrecio)
+                {
+                    <div>
+                        <h4>Precio: @Model.Carro.Price</h4>
+                    </div>
+                }
+            </form>
+        </div>
+
+    </div>
